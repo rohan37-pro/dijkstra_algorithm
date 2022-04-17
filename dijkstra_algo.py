@@ -27,6 +27,13 @@ def add_node(net_array,g):
             node_neighbor+=1
         node+=1
 
+def savefile(graph,file_name):
+    g = nx.Graph()
+    add_node(graph,g)
+    nx.draw(g,with_labels=True)
+    plt.savefig(file_name)
+    plt.clf()
+
 
 def zero_array(nodes):
     array = []
@@ -113,20 +120,17 @@ def dijkstra_algo(graph,source):
 
 
 
+
 if __name__ == "__main__":
     graph = eval(input("enter the array of the graph : "))
     source = int(input("enter the source node(first node will be 0) : "))
     shorted_graph = dijkstra_algo(graph,source)
+    
     print(f"graph of shortest path : \n{shorted_graph}")
 
-    g = nx.Graph()
-    add_node(graph,g)
-    nx.draw(g,with_labels=True)
-    plt.savefig("graph of network.png")
-
-    s = nx.Graph()
-    add_node(shorted_graph,s)
-    nx.draw(s,with_labels=True)
-    plt.savefig("graph of shortest path.png")
+    savefile(graph,"graph of network.png")
+    savefile(shorted_graph,"graph of shortest path.png")
+ 
 
 
+[[0, 4, 0, 0, 0, 0, 0, 8, 0],[4, 0, 8, 0, 0, 0, 0, 11, 0],[0, 8, 0, 7, 0, 4, 0, 0, 2],[0, 0, 7, 0, 9, 14, 0, 0, 0],[0, 0, 0, 9, 0, 10, 0, 0, 0],[0, 0, 4, 14, 10, 0, 2, 0, 0],[0, 0, 0, 0, 0, 2, 0, 1, 6],[8, 11, 0, 0, 0, 0, 1, 0, 7],[0, 0, 2, 0, 0, 0, 6, 7, 0]]
