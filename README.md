@@ -1,8 +1,8 @@
 # dijkstra_algorithm
 
 
-to install the requirements
-pip install requirement.txt
+to install the requirements run the command.<br>
+$ pip install requirement.txt
 <br><br>
 it takes the graph of a netwrok as an array,<br>
 wirte the distance between all the  neighbors of the node in each row of array, here rest of the distance will be zero.<br>
