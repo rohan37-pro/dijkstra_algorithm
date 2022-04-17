@@ -2,8 +2,6 @@ import networkx as nx
 from matplotlib import pyplot as plt
 
 
-
-
 demo_net = [[0, 4, 0, 0, 0, 0, 0, 8, 0],
     [4, 0, 8, 0, 0, 0, 0, 11, 0],
     [0, 8, 0, 7, 0, 4, 0, 0, 2],
@@ -40,9 +38,6 @@ def zero_array(nodes):
 
 
 
-
-
-
 def min_length(dics):
     length = 9*10**999
     for i in dics:
@@ -55,18 +50,6 @@ def min_length(dics):
     except:
         return 0
 
-
-def check_shorted(net_array):
-    total_path = 0
-    for i in net_array:
-        for j in i:
-            if j!=0:
-                total_path +=1
-    total_path = int(total_path)
-    if total_path == len(net_array)-1:
-        return True
-    else:
-        return False
 
 
 def neighbor_nodes(lis):
@@ -130,12 +113,20 @@ def dijkstra_algo(graph,source):
 
 
 
+if __name__ == "__main__":
+    graph = eval(input("enter the array of the graph : "))
+    source = int(input("enter the source node(first node will be 0) : "))
+    shorted_graph = dijkstra_algo(graph,source)
+    print(f"graph of shortest path : \n{shorted_graph}")
 
-shorted_graph = dijkstra_algo(demo_net,0)
-print(shorted_graph)
-g = nx.Graph()
-add_node(shorted_graph,g)
-nx.draw(g,with_labels=True)
-plt.savefig("file3.png")
+    g = nx.Graph()
+    add_node(graph,g)
+    nx.draw(g,with_labels=True)
+    plt.savefig("graph of network.png")
+
+    s = nx.Graph()
+    add_node(shorted_graph,s)
+    nx.draw(s,with_labels=True)
+    plt.savefig("graph of shortest path.png")
 
 
