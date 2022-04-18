@@ -55,7 +55,7 @@ def min_length(dics):
     try:
         return key
     except:
-        return 0
+        return None
 
 
 
@@ -82,6 +82,7 @@ def dijkstra_algo(graph,source):
     while len(node_visited)<=len(graph):
         node_visited.append(node)
         all_neighbors = neighbor_nodes(graph[node])
+        print(f"neighbor of node {node} are {all_neighbors}")
         for neighbor in all_neighbors:
     
             if neighbor in tentative and neighbor not in permanent:
@@ -95,9 +96,12 @@ def dijkstra_algo(graph,source):
                 tentative[neighbor][0] = graph[node][neighbor]+distance_form_source
                 tentative[neighbor][1] = node
 
+        print(f"tentative is {tentative}")        
+
 
         key = min_length(tentative)
-        if key == 0:
+        print(f"key is {key}")
+        if key == None:
             break
         permanent[key] = tentative[key]
         #print(f"permanent is {permanent}")
