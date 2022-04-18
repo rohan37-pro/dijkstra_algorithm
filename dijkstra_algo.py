@@ -82,7 +82,7 @@ def dijkstra_algo(graph,source):
     while len(node_visited)<=len(graph):
         node_visited.append(node)
         all_neighbors = neighbor_nodes(graph[node])
-        print(f"neighbor of node {node} are {all_neighbors}")
+        print(f"\nneighbor of node {node} are {all_neighbors}")
         for neighbor in all_neighbors:
     
             if neighbor in tentative and neighbor not in permanent:
@@ -100,21 +100,16 @@ def dijkstra_algo(graph,source):
 
 
         key = min_length(tentative)
-        print(f"key is {key}")
         if key == None:
             break
         permanent[key] = tentative[key]
-        #print(f"permanent is {permanent}")
+        print(f"permanent is {permanent}")
         distance = tentative[key][0]
-        print(f"node {node} distance = {distance} key = {key}")
+        print(f"node {node} distance = {distance} key = {key}\n")
         permanent_graph[tentative[key][1]][key] = distance
         distance_form_source = tentative[key][0]
-        #print(f"graph[node][key] is equal to {graph[node][key]}")
-        print(tentative)
         tentative.pop(key)
         node = key
-        #print(f"key is equal to {key}")
-        #print(f"distance_form_source is equal to {distance_form_source}")
 
         if len(node_visited) == len(graph):
             break
@@ -124,10 +119,9 @@ def dijkstra_algo(graph,source):
 
 
 
-
 if __name__ == "__main__":
     graph = eval(input("enter the array of the graph : "))
-    source = int(input("enter the source node(first node will be 0) : "))
+    source = int(input("enter the source node : "))
     shorted_graph = dijkstra_algo(graph,source)
     
     print(f"graph of shortest path : \n{shorted_graph}")
