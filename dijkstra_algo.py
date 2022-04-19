@@ -26,6 +26,14 @@ def add_node(net_array,g):
             node_neighbor+=1
         node+=1
 
+def extract_graph_from_file(file):
+    with open(file,"r") as f:
+        graph = f.read()
+        graph = graph.replace('\n',' ')
+        graph = graph.strip()
+        graph = eval(graph)
+        return graph
+
 def savefile(graph,file_name):
     g = nx.Graph()
     add_node(graph,g)
@@ -118,7 +126,12 @@ def dijkstra_algo(graph,source):
 
 
 if __name__ == "__main__":
-    graph = eval(input("enter the array of the graph : "))
+    inp = input("input from file or manual(f/m) : ")
+    if inp == "m":
+        graph = eval(input("enter the array of the graph : "))
+    if inp == "f":
+        file = input("enter name of you text file : ")
+        graph = extract_graph_from_file(file)
     source = int(input("enter the source node : "))
     shorted_graph = dijkstra_algo(graph,source)
     
